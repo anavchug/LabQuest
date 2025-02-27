@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using LabQuest.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Configure EF Core to use SQL Server and the connection string.
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

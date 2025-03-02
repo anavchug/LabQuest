@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using LabQuest.Data;
+using LabQuest.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

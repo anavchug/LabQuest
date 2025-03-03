@@ -1,4 +1,5 @@
 ﻿@page
+@model LabQuest.Pages.Labs.IndexModel
 @{
     Layout = null;
 }
@@ -56,6 +57,20 @@
         <section id="labs" class="mb-5">
             <h2>Labs</h2>
             <p>Content for labs...</p>
+
+            <ul>
+                @if (Model.Labs != null && Model.Labs.Any())
+        {
+            foreach (var lab in Model.Labs)
+            {
+                <li>@lab.Title - @lab.Description</li>
+            }
+        }
+        else
+        {
+                <li>No labs available.</li>
+        }
+            </ul>
         </section>
         <section id="tracks" class="mb-5">
             <h2>Tracks</h2>

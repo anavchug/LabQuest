@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using LabQuest.Infrastructure.Data;
+using LabQuest.Application.Interfaces;
+using LabQuest.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddRazorPages();
 // Configure EF Core to use SQL Server and the connection string.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register the LabRepository with the DI container
+builder.Services.AddScoped<ILabRepository, LabRepository>();
 
 var app = builder.Build();
 
